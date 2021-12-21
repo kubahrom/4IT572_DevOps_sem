@@ -19,8 +19,8 @@
       register: ec2_info
 
     - name: Terminate other instances
-      ec2:
-        instacnce_ids: '{{ item.instance_id }}'
+      amazon.aws.ec2:
+        instance_ids: '{{ item.instance_id }}'
         region: us-east-1
         state: abstent
         wait: yes
