@@ -124,6 +124,7 @@ jobs:
           chmod 400 ./ansible/devops.pem
 
       - name: Setup env
+        run: echo setup-env
         env:
           ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
           SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
