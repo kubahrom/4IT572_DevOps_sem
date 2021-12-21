@@ -4,7 +4,8 @@
 
   tasks:
     - name: Debug
-      command: echo "{{ lookup('env', 'ACCESS_KEY') }}"
+      # command: echo "{{ lookup('env', 'ACCESS_KEY') }}"
+      command: echo "{{ lookup('env', 'HOME') }}"
       register: env
 
     - debug: msg="{{ env.stdout }}"
