@@ -38,6 +38,7 @@ jobs:
           ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
           SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
           SECURITY_TOKEN: ${{ secrets.AWS_SECURITY_TOKEN }}
+          ANSIBLE_HOST_KEY_CHECKING: False
 
       - name: Run ansible
         run: |
