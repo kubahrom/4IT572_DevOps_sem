@@ -5,9 +5,9 @@ on:
   pull_request:
     branches:
       - master
-  # push:
-  #   branches:
-  #     - master
+  push:
+    branches:
+      - master
 
 jobs:
   # Install all dependencies
@@ -99,35 +99,37 @@ jobs:
       - name: Test
         run: |
           npm run test
-          
-  # Deploy:
-  #Deploy eshop on AWS
-  # needs: [Build, Test]
-  # runs-on: ubuntu-latest
-  # if: ${{ github.ref == 'refs/heads/master' }}
 
-  # steps:
-  #   - name: Git Checkout
-  #     uses: actions/checkout@v2.4.0
-  #     with:
-  #       token: ${{ secrets.WORKFLOW_TOKEN }}
+  Deploy:
+    #Deploy eshop to AWS
+    needs: [Build, Test]
+    runs-on: ubuntu-latest
 
-  #   - name: Setup python
-  #     uses: actions/setup-python@v2
-  #     with:
-  #       python-version: '3.7'
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v2.4.0
+        with:
+          token: ${{ secrets.WORKFLOW_TOKEN }}
 
-  #   - name: Install packages
-  #     run: pip3 install ansible==4.0 boto boto3
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
 
-  #   - name: Add SSH key
-  #     run: |
-  #       touch ./ansible/devops.pem
-  #       echo '${{ secrets.SSH_KEY }}' >> ./ansible/devops.pem
-  #       chmod 400 ./ansible/devops.pem
+      - name: Install packages
+        run: pip3 install ansible==4.0 boto boto3
 
-  #   - name: Setup env
-  #     env:
-  #       ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
-  #       SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
-  #       SECURITY_TOKEN: ${{ secrets.AWS_SECURITY_TOKEN }}
+      - name: Add SSH key
+        run: |
+          touch ./ansible/devops.pem
+          echo '${{ secrets.SSH_KEY }}' >> ./ansible/devops.pem
+          chmod 400 ./ansible/devops.pem
+
+      - name: Setup env and run ansible
+        env:
+          ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+          SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+          SECURITY_TOKEN: ${{ secrets.AWS_SECURITY_TOKEN }}
+          ANSIBLE_HOST_KEY_CHECKING: False
+        run: |
+          ansible-playbook ./ansible/ec2_deploy.yml --user ec2-user --key-file ./ansible/devops.pem

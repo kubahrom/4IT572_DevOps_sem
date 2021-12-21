@@ -2,9 +2,9 @@ name: Deploy eshop to AWS
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - master
+  # push:
+  #   branches:
+  #     - master
 
 jobs:
   Deploy:
@@ -31,9 +31,6 @@ jobs:
           touch ./ansible/devops.pem
           echo '${{ secrets.SSH_KEY }}' >> ./ansible/devops.pem
           chmod 400 ./ansible/devops.pem
-
-      # - name: Add AWS credentials
-      #   run: |
 
       - name: Setup env and run ansible
         env:
