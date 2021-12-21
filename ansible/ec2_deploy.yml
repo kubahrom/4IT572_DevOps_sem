@@ -24,9 +24,12 @@
         # aws_access_key: '{{ access_key }}'
         # aws_secret_key: '{{ secret_key }}'
         # security_token: '{{ session_token }}'
-        aws_access_key: "{{ lookup('env', 'ACCESS_KEY') }}"
-        aws_secret_key: "{{ lookup('env', 'SECRET_KEY')}}"
-        security_token: "{{ lookup('env', 'SECURITY_TOKEN') }}"
+        # aws_access_key: "{{ lookup('env', 'ACCESS_KEY') }}"
+        # aws_secret_key: "{{ lookup('env', 'SECRET_KEY')}}"
+        # security_token: "{{ lookup('env', 'SECURITY_TOKEN') }}"
+        aws_access_key: 'ASIAUIPLYE2X45VA4H3Q'
+        aws_secret_key: 'XZvZxKxr8z2hCPgGtHQ8WQkskejgbJIFEIhVHY7B'
+        security_token: 'FwoGZXIvYXdzEC0aDHEAqi+9RLHRJEQCSSK3AdFeugPzwioHmpTpkPc2JixhQgIW+y1mpvNPLl27YIBsKdqjHT/meduIZxH8pA14vH3EX1+SS7xnWo4X85t8BO+qhMt93ssE0uaZY/nHtKNBqxSaK1afRDBcVpE4ocplReD1pjGJ/9ecITre9As4lo78J7/mywTkSrF6UFLon0k/hJglQ21r0WXpKrAjAvuL6RTygDnyj50H8xd65JWxX2qwvBdvEqpy+7BENNhjjqjNYlaewXqxviiv94aOBjItD9hfYP7IVpVewsHlF1+mbhFGYeGujwNumbPPq9uXBCW8yaemYXZnFpT854d3'
       register: ec2
 
     - name: Add new instance to host group
