@@ -99,7 +99,7 @@ jobs:
       - name: Test
         run: |
           npm run test
-
+          
   # Deploy:
   #Deploy eshop on AWS
   # needs: [Build, Test]
