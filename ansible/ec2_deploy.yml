@@ -27,7 +27,7 @@
         aws_secret_key: "{{ lookup('env', 'SECRET_KEY')}}"
         security_token: "{{ lookup('env', 'SECURITY_TOKEN') }}"
         instance_ids: '{{ item.instance_id }}'
-      loop: '{{ ec_info.instances }}'
+      loop: '{{ ec2_info.instances }}'
       loop_control:
         label: '{{ item.instance_id }}'
 
