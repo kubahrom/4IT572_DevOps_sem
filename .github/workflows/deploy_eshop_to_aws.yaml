@@ -9,7 +9,7 @@ on:
 jobs:
   Deploy:
     #Deploy eshop to AWS
-    needs: [Build, Test]
+    # needs: [Build, Test]
     runs-on: ubuntu-latest
 
     steps:
