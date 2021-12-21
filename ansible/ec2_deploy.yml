@@ -9,7 +9,7 @@
     # - debug: msg="{{ env.stdout }}"
 
     - name: Get running t2.small instances
-      ec2_instance_facts:
+      ec2_instance_info:
         region: us-east-1
         filters:
           instance_type: t2.small
