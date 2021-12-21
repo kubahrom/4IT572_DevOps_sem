@@ -38,5 +38,6 @@ jobs:
           SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
           SECURITY_TOKEN: ${{ secrets.AWS_SECURITY_TOKEN }}
 
-      - name: Run ansible playbook
-        run: ansible-playbook ansible/ec2_deploy.yml --user ec2-user --key-file ansible/devops.pem
+      # - name: Run ansible playbook
+      #   run: |
+      #     ansible-playbook ansible/ec2_deploy.yml --user ec2-user --key-file ansible/devops.pem
