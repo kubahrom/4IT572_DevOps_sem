@@ -42,4 +42,4 @@ jobs:
 
       - name: Run ansible
         run: |
-          ansible-playbook ansible/ec2_deploy.yml --user ec2-user --key-file ansible/devops.pem
+          ansible-playbook ansible/ec2_deploy.yml --user ec2-user --key-file ./ansible/devops.pem
